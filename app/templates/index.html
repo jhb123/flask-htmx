@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}Index{% endblock %}
+
+{% block content %}
+<h1>Index</h1>
+{% for dataset in datasets %}
+    <li><a href="/results/dataset/{{dataset}}">data set {{dataset}}</a></li>
+{% endfor %}
+{% endblock %}

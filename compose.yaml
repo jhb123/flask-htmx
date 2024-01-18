@@ -1,0 +1,6 @@
+services:
+  htmx-flask-server:
+    build:
+      context: .
+    ports:
+      - 5678:5678
