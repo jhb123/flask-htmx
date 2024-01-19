@@ -9,7 +9,7 @@
 <button hx-get="/results/dataset/{{name}}/heatmap" hx-target="#plot-data" class="btn btn-primary m-auto">heat map</button>
 <div class="row align-items-start">
 
-    <div class="col-6 overflow-y-auto" style="height: 75vh">
+    <div class="col-6 overflow-y-auto" style="height: 60vh">
         <div class="row align-items-start my-2">
             {% for row in data %}
                 <p class="col-6" >{{row}}</p>
@@ -20,7 +20,7 @@
         </div>
     </div>
 
-    <div id="scatter-plot" class="col-6" style="height: 75vh"></div>
+    <div id="scatter-plot" class="col-6" style="height: 60vh"></div>
 
 </div>
 

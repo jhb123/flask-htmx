@@ -18,7 +18,10 @@ if __name__ == "__main__":
         data = {}
 
         for i in range(1000):
-            data[f"experiment_{i}"] = {"x": np.arange(0,100).tolist(), "y": np.random.rand(100).tolist()}
+            x_data = np.arange(0,100)
+            f = 1/20 
+            y_data = np.sin( 2*np.pi*x_data*f) + 4*(np.random.rand(100)-0.5)
+            data[f"experiment_{i}"] = {"x": x_data.tolist(), "y":  y_data.tolist()}
             
         with open(dataset_path/"data.json", "w+", encoding="utf-8") as f:
             json.dump(data,f, indent=4)
