@@ -5,7 +5,7 @@
 # Running
 Run from docker
 ```
-docker build . --tag flask-htm
+docker build . --tag flask-htmx
 docker run -p 5678:5678 flask-htmx
 ```
 or with compose
