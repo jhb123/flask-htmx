@@ -4,19 +4,22 @@
 
 {% block content %}
 <h1>dataset: {{name}}</h1>
-<a href="/">home</a>
-<div class="flex gap-2">
-    <button hx-get="/results/dataset/{{name}}/1" hx-target="#plot-data">generate linear data</button>
-    <button hx-get="/results/dataset/{{name}}/2" hx-target="#plot-data">generate quadratic data</button>
-    <button hx-get="/results/dataset/{{name}}/3" hx-target="#plot-data">generate cubic data</button>
+<div class="row align-items-start">
+    <button hx-get="/results/dataset/{{name}}/1" hx-target="#plot-data" class="btn btn-primary col-2 m-auto">linear data</button>
+    <button hx-get="/results/dataset/{{name}}/2" hx-target="#plot-data" class="btn btn-primary col-2 m-auto">quadratic data</button>
+    <button hx-get="/results/dataset/{{name}}/3" hx-target="#plot-data" class="btn btn-primary col-2 m-auto">cubic data</button>
 </div>
 
-<div id="scatter-plot" style="width: 800px; height: 600px; background-color: lightblue;"></div>
+<div class="row align-items-start">
+    <div id="scatter-plot" style="col-9"></div>
+</div>
+
+{% for row in rows %}
+<p>{{row}}</p>
+{% endfor %}
 
 <script id="plot-data">
 
 </script>
-
-<a href="/">home</a>
 
 {% endblock %}

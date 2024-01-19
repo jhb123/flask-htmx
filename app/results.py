@@ -5,7 +5,8 @@ bp = Blueprint('results', __name__, url_prefix='/results')
 
 @bp.route('/dataset/<name>', methods=('GET', 'POST'))
 def dataview(name):
-    return render_template("dataset.html", name=name)
+    rows = np.arange(0,100)
+    return render_template("dataset.html", name=name, rows=rows)
 
 @bp.route('/dataset/<name>/<exponent>', methods=('GET', 'POST'))
 def figure(name,exponent):
@@ -13,4 +14,4 @@ def figure(name,exponent):
 
     y = np.power(x, int(exponent))
 
-    return render_template("figure.js", name=name, x=x.tolist(),y=y.tolist())
+    return render_template("figure.html", name=name, x=x.tolist(),y=y.tolist())

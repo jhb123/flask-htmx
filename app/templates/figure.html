@@ -15,9 +15,12 @@
         },
         yaxis: {
             title: 'Y-axis'
-        }
+        },
+        template: 'plotly_dark'
     };
+    
+    var config = {responsive: true};
 
     // Create the plot
-    Plotly.newPlot('scatter-plot', data, layout);
+    Plotly.newPlot('scatter-plot', data, layout, config)
 </script>

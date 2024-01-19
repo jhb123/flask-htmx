@@ -4,7 +4,15 @@
 
 {% block content %}
 <h1>Index</h1>
+
 {% for dataset in datasets %}
-    <li><a href="/results/dataset/{{dataset}}">data set {{dataset}}</a></li>
+    <div class="row align-items-start">
+        <div class="col-2">
+            <p>Dataset name: {{dataset}}</p>
+        </div>
+        <div class="col">
+            <a href="/results/dataset/{{dataset}}">result page</a>
+        </div>
+    </div>
 {% endfor %}
 {% endblock %}
