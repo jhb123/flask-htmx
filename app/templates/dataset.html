@@ -6,13 +6,12 @@
 <h1>dataset: {{name}}</h1>
 <a href="/">home</a>
 <div class="flex gap-2">
-    <button hx-get="/results/dataset/{{name}}/1" hx-target="#plot-data"  class="bg-red-900 hover:bg-red-700 w-fit p-3">generate linear data</button>
-    <button hx-get="/results/dataset/{{name}}/2" hx-target="#plot-data" class="bg-red-900 hover:bg-red-700 w-fit p-3">generate quadratic data</button>
-    <button hx-get="/results/dataset/{{name}}/3" hx-target="#plot-data" class="bg-red-900 hover:bg-red-700 w-fit p-3">generate cubic data</button>
+    <button hx-get="/results/dataset/{{name}}/1" hx-target="#plot-data">generate linear data</button>
+    <button hx-get="/results/dataset/{{name}}/2" hx-target="#plot-data">generate quadratic data</button>
+    <button hx-get="/results/dataset/{{name}}/3" hx-target="#plot-data">generate cubic data</button>
 </div>
 
-{# <button hx-get="/results/dataset/{{<name>}}/2" hx-target="#result-area" class="bg-red-900 hover:bg-red-700 w-fit p-3">generate linear data</button> #}
-<div id="scatter-plot" class="w-full h-full"></div>
+<div id="scatter-plot" style="width: 800px; height: 600px; background-color: lightblue;"></div>
 
 <script id="plot-data">
 
