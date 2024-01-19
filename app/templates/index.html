@@ -5,13 +5,13 @@
 {% block content %}
 <h1>Index</h1>
 
-{% for dataset in datasets %}
+{% for name,path in datasets %}
     <div class="row align-items-start">
-        <div class="col-2">
-            <p>Dataset name: {{dataset}}</p>
+        <div class="col font-monospace">
+            <p>{{path}}</p>
         </div>
         <div class="col">
-            <a href="/results/dataset/{{dataset}}">result page</a>
+            <a href="/results/dataset/{{name}}">result page</a>
         </div>
     </div>
 {% endfor %}

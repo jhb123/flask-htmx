@@ -4,19 +4,27 @@
 
 {% block content %}
 <h1>dataset: {{name}}</h1>
+<pre>Path: {{path}}</pre>
+
+<button hx-get="/results/dataset/{{name}}/heatmap" hx-target="#plot-data" class="btn btn-primary m-auto">heat map</button>
 <div class="row align-items-start">
-    <button hx-get="/results/dataset/{{name}}/1" hx-target="#plot-data" class="btn btn-primary col-2 m-auto">linear data</button>
-    <button hx-get="/results/dataset/{{name}}/2" hx-target="#plot-data" class="btn btn-primary col-2 m-auto">quadratic data</button>
-    <button hx-get="/results/dataset/{{name}}/3" hx-target="#plot-data" class="btn btn-primary col-2 m-auto">cubic data</button>
+
+    <div class="col-6 overflow-y-auto" style="height: 75vh">
+        <div class="row align-items-start my-2">
+            {% for row in data %}
+                <p class="col-6" >{{row}}</p>
+                <div class="col-6" >
+                    <button hx-get="/results/dataset/{{name}}/{{row}}" hx-target="#plot-data" class="btn btn-secondary m-auto">show data</button>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div id="scatter-plot" class="col-6" style="height: 75vh"></div>
+
 </div>
 
-<div class="row align-items-start">
-    <div id="scatter-plot" style="col-9"></div>
-</div>
 
-{% for row in rows %}
-<p>{{row}}</p>
-{% endfor %}
 
 <script id="plot-data">
 

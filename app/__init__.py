@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory, current_app
 
 
 def create_app(test_config=None):
@@ -26,8 +26,16 @@ def create_app(test_config=None):
 
     # a simple page that says hello
     @app.route('/')
-    def hello():
-        return render_template('index.html', datasets=[1,2,3,4])
+    def index():
+        db_path = current_app.config['FLASK_DATABASE_PATH']
+        # Get a list of directories using iterdir() and is_dir()
+        directories_list = [entry.name for entry in db_path.iterdir() if entry.is_dir()]
+        directories_paths = [entry for entry in db_path.iterdir() if entry.is_dir()]
+        datasets = list(zip(directories_list, directories_paths))
+        
+        sorted_data = sorted(datasets, key= lambda x: int(x[0].split("_")[-1]))
+
+        return render_template('index.html', datasets=sorted_data)
 
     @app.route('/static/<path:filename>')
     def static_file(filename):
