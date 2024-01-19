@@ -1,5 +1,5 @@
 import os
-
+from pathlib import Path
 from flask import Flask, render_template, send_from_directory, current_app
 
 
@@ -17,6 +17,9 @@ def create_app(test_config=None):
     else:
         # load the test config if passed in
         app.config.from_mapping(test_config)
+
+    app.config['FLASK_DATABASE_PATH'] = Path(os.environ.get('FLASK_DATABASE_PATH', '/database'))
+
 
     # ensure the instance folder exists
     try:
