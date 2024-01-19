@@ -37,8 +37,6 @@ def heatmap(name):
     x = data["experiment_0"]["x"]
 
     y = [i for i, k in enumerate(data)]
-    print(y)
-
     z = [data[exp]["y"] for exp in data]
 
     return render_template("heatmap.html", name=f"{name}", x=x,y=y,z=z)
