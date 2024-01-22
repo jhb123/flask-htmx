@@ -4,7 +4,7 @@ import numpy as np
 
 bp = Blueprint('results', __name__, url_prefix='/results')
 
-@bp.route('/dataset/<name>', methods=('GET', 'POST'))
+@bp.route('/dataset/<name>', methods=(['GET']))
 def dataview(name):
     path = current_app.config['FLASK_DATABASE_PATH'] / name / "data.json"
 
@@ -13,7 +13,7 @@ def dataview(name):
 
     return render_template("dataset.html", name=name, path=path, data=data)
 
-@bp.route('/dataset/<name>/<experiment>', methods=('GET', 'POST'))
+@bp.route('/dataset/<name>/<experiment>', methods=(['GET']))
 def figure(name,experiment):
     path = current_app.config['FLASK_DATABASE_PATH'] / name / "data.json"
 
@@ -24,10 +24,10 @@ def figure(name,experiment):
 
     y = data[experiment]["y"]
 
-    return render_template("figure.html", name=f"{name}-{experiment}", x=x,y=y)
+    return render_template("data_table.html", data=data, name=f"{name}", x=x,y=y, figure_title=f"{name}-{experiment}",experiment=experiment)
 
 
-@bp.route('/dataset/<name>/heatmap', methods=('GET', 'POST'))
+@bp.route('/dataset/<name>/heatmap', methods=(['GET']))
 def heatmap(name):
     path = current_app.config['FLASK_DATABASE_PATH'] / name / "data.json"
 
@@ -39,4 +39,4 @@ def heatmap(name):
     y = [i for i, k in enumerate(data)]
     z = [data[exp]["y"] for exp in data]
 
-    return render_template("heatmap.html", name=f"{name}", x=x,y=y,z=z)
+    return render_template("heatmap.html", name=f"{name}", x=x,y=y,z=z, figure_title=f"{name}")

@@ -6,28 +6,17 @@
 <h1>dataset: {{name}}</h1>
 <pre>Path: {{path}}</pre>
 
-<button hx-get="/results/dataset/{{name}}/heatmap" hx-target="#plot-data" class="btn btn-primary m-auto">heat map</button>
+<button hx-get="/results/dataset/{{name}}/heatmap" hx-target="#heat-map" class="btn btn-primary m-auto">heat map</button>
 <div class="row align-items-start">
 
     <div class="col-6 overflow-y-auto" style="height: 60vh">
         <div class="row align-items-start my-2">
-            {% for row in data %}
-                <p class="col-6" >{{row}}</p>
-                <div class="col-6" >
-                    <button hx-get="/results/dataset/{{name}}/{{row}}" hx-target="#plot-data" class="btn btn-secondary m-auto">show data</button>
-                </div>
-            {% endfor %}
+            {% include "data_table.html" %}
         </div>
     </div>
 
     <div id="scatter-plot" class="col-6" style="height: 60vh"></div>
+    <script id="heat-map"></script>
 
 </div>
-
-
-
-<script id="plot-data">
-
-</script>
-
 {% endblock %}
