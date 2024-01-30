@@ -11,4 +11,5 @@ RUN python3 populate_database.py
 
 EXPOSE 5678
 
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5678", "app:create_app()"]
+CMD ["gunicorn", "-w", "4", "--worker-class", "uvicorn.workers.UvicornWorker", "-b", "0.0.0.0:5678", "fast_api_app.main:app"]
+# CMD ["uvicorn", "-w", "4", "-b", "0.0.0.0:5678", "app:create_app()"]
